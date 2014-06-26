@@ -181,7 +181,7 @@ void test_dp_add_SSE2(int tds,size_t iterations){
     uint64 ops = 20 * 1000 * iterations * tds * 2;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;
@@ -331,7 +331,7 @@ void test_dp_mul_SSE2(int tds,size_t iterations){
     uint64 ops = 20 * 1000 * iterations * tds * 2;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;
@@ -520,7 +520,7 @@ void test_dp_mac_SSE2(int tds,size_t iterations){
     uint64 ops = 48 * 1000 * iterations * tds * 2;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;

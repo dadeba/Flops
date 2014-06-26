@@ -205,7 +205,7 @@ void test_dp_fma_FMA3(int tds,size_t iterations){
     uint64 ops = 96 * 1000 * iterations * tds * 4;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;

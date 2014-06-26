@@ -183,7 +183,7 @@ void test_dp_add_AVX(int tds,size_t iterations){
     uint64 ops = 20 * 1000 * iterations * tds * 4;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;
@@ -335,7 +335,7 @@ void test_dp_mul_AVX(int tds,size_t iterations){
     uint64 ops = 20 * 1000 * iterations * tds * 4;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;
@@ -526,7 +526,7 @@ void test_dp_mac_AVX(int tds,size_t iterations){
     uint64 ops = 48 * 1000 * iterations * tds * 4;
     printf("Seconds = %g\n",secs);
     printf("FP Ops  = %llu\n",(unsigned long long)ops);
-    printf("FLOPs   = %g\n",ops / secs);
+    printf("GFLOPs   = %g\n",ops / secs / 1.0e9);
 
     double out = 0;
     int c = 0;
@@ -534,7 +534,7 @@ void test_dp_mac_AVX(int tds,size_t iterations){
         out += sum[c++];
     }
     
-    printf("sum = %g\n\n",out);
+    printf("sum = %g\n\n", out);
 
     free(sum);
 }

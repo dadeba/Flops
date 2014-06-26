@@ -77,6 +77,7 @@ void cpuid_print_exts(){
     int XOP     = 0;
     int FMA3    = 0;
     int FMA4    = 0;
+    int MIC     = 0;
 
     int info[4];
     cpuid(info, 0);
@@ -109,6 +110,10 @@ void cpuid_print_exts(){
         XOP   = (info[2] & ((int)1 << 11)) != 0;
     }
 
+    // detect MIC architecture
+    cpuid(info, 0x00000001);
+    MIC = (((info[0] >> 8)& 0xf) == 0xb);
+
     printf("Hardware Features:\n");
     printf("x64   = %d\n",x64);
     printf("MMX   = %d\n",MMX);
@@ -123,7 +128,31 @@ void cpuid_print_exts(){
     printf("FMA3  = %d\n",FMA3);
     printf("FMA4  = %d\n",FMA4);
     printf("XOP   = %d\n",XOP);
+    printf("MIC   = %d\n",MIC);
     printf("\n");
+
+    if (MIC) {
+      cpuid(info, 0x00000001);
+      if (((info[0] >> 4)& 0xf) == 0x1) {
+	printf("\tMIC KNC 62C 22nm L2 512KB\n");
+      } else {
+	printf("\tMIC KNF 32C 45nm L2 256KB\n");
+      }
+      
+      printf("\tMIC stepping ");
+      switch(info[0]&0xf) {
+      case 0x1:
+	printf("B0");
+	break;
+      case 0x3:
+	printf("B1");
+	break;
+      case 0x2:
+	printf("C0");
+	break;
+      }
+      printf("\n");
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

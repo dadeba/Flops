@@ -13,6 +13,8 @@ Therefore very few (even numerical) programs can achieve even a small fraction o
 
 This project shows how to achieve >95% of that theoretical performance on some of the current processors of 2010 - 2013.
 
+New: Add Intel Xeon Phi (MIC) support.
+
 -----
 
 How to Compile:
@@ -29,6 +31,9 @@ How to Compile:
 **Linux - GCC**
  - Run `compile_linux_gcc.sh`.
 
+**Linux - Intel Compiler for MIC**
+ - Run `compile_linux_icc_mic.sh`.
+
 A Visual Studio project has also been setup for users with MSVC 2012 or later.
 
 -----
@@ -38,6 +43,7 @@ As of the current version, the project supports:
  - AVX
  - FMA4* (AMD's flavor of the Fused-Multiply Add instruction set)
  - FMA3 (Intel's flavor of the Fused-Multiply Add instruction set)
+ - Intel Xeon Phi 512-bit vector ISA
 
 *Note that this benchmark uses 256-bit FMA4. The performance of 256-bit SIMD is very slow on current AMD processors.
 
